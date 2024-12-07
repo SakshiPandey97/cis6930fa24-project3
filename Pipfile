@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+flask = "*"
+plotly = "*"
+pandas = "*"
+numpy = "*"
+scikit-learn = "*"
+pypdf = "*"
+requests = "*"
+pytest = "*"
+pytest-flask = "*"
+pytest-mock = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
