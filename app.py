@@ -30,7 +30,6 @@ def not_found_error(error):
     logger.error(f"Page Not Found: {error}")
     return render_template('404.html'), 404
 
-# Configuration
 UPLOAD_FOLDER = os.path.join(os.path.dirname(__file__), 'uploads')
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
@@ -53,12 +52,9 @@ def get_db_connection():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # Handle URL input
         incident_url = request.form.get("incident_url")
-        # Handle file upload
+    
         file = request.files.get("incident_file")
-
-        # Recreate database each time for simplicity
         conn = createdb()  
         if incident_url and incident_url.strip():
             pdf_data = fetchincidents(incident_url)
@@ -94,11 +90,9 @@ def visualizations():
                                time_bins_plot="",
                                message="No data available. Please upload a file or enter a URL.")
 
-    # Data Preparation
     df['nature'] = df['nature'].fillna('Unknown')
     df['incident_location'] = df['incident_location'].fillna('Unknown')
     
-    # Parse date and time
     def parse_datetime(s):
         pattern = r"(\d{1,2}/\d{1,2}/\d{4})\s+(\d{1,2}:\d{2})?"
         match = re.match(pattern, str(s))
@@ -112,7 +106,7 @@ def visualizations():
     df['datetime'] = df['incident_time'].apply(parse_datetime)
     df['date_only'] = df['datetime'].dt.date
 
-    # ---- Visualization 1: Incident Clustering (Baby Blue Background) ----
+    #graph 1
     texts = (df['nature'] + " " + df['incident_location']).values
     vectorizer = TfidfVectorizer(stop_words='english')
     X = vectorizer.fit_transform(texts)
@@ -126,7 +120,7 @@ def visualizations():
     cluster_fig = go.Figure()
     cluster_fig.update_layout(
         template="plotly_white",
-        paper_bgcolor="#E0F7FA",   # baby blue background
+        paper_bgcolor="#E0F7FA", 
         plot_bgcolor="#E0F7FA",
         title="Incident Clustering by Nature and Location",
         xaxis_title="PCA Dimension 1",
@@ -135,7 +129,6 @@ def visualizations():
         font=dict(family="Arial, sans-serif")
     )
 
-    # Pastel cluster colors: pink, lavender, light yellow
     cluster_colors = ["#FFD1DC", "#E6E6FA", "#FFFACD"]
 
     unique_labels = np.unique(labels)
@@ -153,18 +146,18 @@ def visualizations():
         ))
     cluster_plot = json.dumps(cluster_fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    # ---- Visualization 2: Count by Nature (Pink Background) ----
+    #graph 2
     nature_counts = df['nature'].value_counts().sort_values(ascending=False)
     bar_fig = go.Figure([go.Bar(
         x=nature_counts.index, 
         y=nature_counts.values,
         text=nature_counts.values,
         textposition='auto',
-        marker_color="#D8BFD8"  # lavender bars
+        marker_color="#D8BFD8"  #lavender haze
     )])
     bar_fig.update_layout(
         template="plotly_white",
-        paper_bgcolor="#FFE4E1",  # very light pink background
+        paper_bgcolor="#FFE4E1",  
         plot_bgcolor="#FFE4E1",
         title="Count of Incidents by Nature",
         xaxis_title="Nature of Incident",
@@ -175,18 +168,18 @@ def visualizations():
     bar_fig.update_xaxes(tickangle=45)
     bar_plot = json.dumps(bar_fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    # ---- Visualization 3: Top 10 Locations (Lavender Background) ----
+    #graph 3
     loc_counts = df['incident_location'].value_counts().head(10)
     loc_fig = go.Figure([go.Bar(
         x=loc_counts.index,
         y=loc_counts.values,
         text=loc_counts.values,
         textposition='auto',
-        marker_color="#ADD8E6"  # baby blue bars
+        marker_color="#ADD8E6" 
     )])
     loc_fig.update_layout(
         template="plotly_white",
-        paper_bgcolor="#E6E6FA", # lavender background
+        paper_bgcolor="#E6E6FA", 
         plot_bgcolor="#E6E6FA",
         title="Top 10 Locations by Incident Count",
         xaxis_title="Location",
@@ -197,7 +190,7 @@ def visualizations():
     loc_fig.update_xaxes(tickangle=45)
     time_plot = json.dumps(loc_fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    # ---- Visualization 4: Incidents by Hour (Light Yellow Background) ----
+    
     df['hour'] = df['datetime'].dt.hour
     hour_counts = df['hour'].value_counts().sort_index()
     time_bins_fig = go.Figure([go.Bar(
@@ -205,11 +198,11 @@ def visualizations():
         y=hour_counts.values,
         text=hour_counts.values,
         textposition='auto',
-        marker_color="#FFD1DC"  # pastel pink bars
+        marker_color="#FFD1DC"
     )])
     time_bins_fig.update_layout(
         template="plotly_white",
-        paper_bgcolor="#FFFACD", # light yellow background
+        paper_bgcolor="#FFFACD",
         plot_bgcolor="#FFFACD",
         title="Incidents by Hour of the Day",
         xaxis_title="Hour of Day (0-23)",
