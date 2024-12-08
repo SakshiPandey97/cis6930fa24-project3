@@ -155,6 +155,7 @@ Expected Outcome: The response status code should be 200, and the content should
 3. The database is recreated on each run for simplicity.
 
 ## **Video Demonstration**
-A narrated video demonstrating the application can be found here: [YouTube Link](https://youtu.be/Yc0PIYjrZx8).
+A narrated video demonstrating the application can be found here: [YouTube Link](https://youtu.be/Yc0PIYjrZx8)
+[![Application Demo](https://img.youtube.com/vi/Yc0PIYjrZx8/0.jpg)](https://youtu.be/Yc0PIYjrZx8)
 
 
