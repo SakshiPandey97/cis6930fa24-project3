@@ -27,7 +27,7 @@ This project includes three distinct visualizations:
 - Hovering over a cluster reveals incident details (e.g., nature and location).
 
 #### **Visualization 2: Bar Graph (Incident Count by Nature)**
-- A bar chart compares the count of incidents based on their nature (e.g., Assault, Theft).
+- A bar chart compares the count of incidents based on their nature (ex. Assault, Theft).
 - Provides an overview of the most and least common incident types.
 
 #### **Visualization 3: Incidents by Hour of the Day**
@@ -42,11 +42,7 @@ This project includes three distinct visualizations:
 - Pipenv for dependency management
 
 ### **Installation Steps**
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/<your-username>/cis6930fa24-project3.git
-   cd cis6930fa24-project3
-   ```
+1. Clone the repository.
 
 2. Install dependencies:
    ```bash
@@ -120,7 +116,7 @@ Key dependencies include:
 - pypdf (for extracting text from PDFs)
 - sqlite3 (Python standard library for database)
 
-All dependencies are listed in `Pipfile` or `requirements.txt`.
+All dependencies are listed in `Pipfile`.
 ### Tests
 This project includes a minimal set of tests designed to verify the core functionality of the application. The tests use pytest and ensure that the web application behaves as expected for its key features. Below is an overview of the test structure and instructions to run them.
 
@@ -159,6 +155,6 @@ Expected Outcome: The response status code should be 200, and the content should
 3. The database is recreated on each run for simplicity.
 
 ## **Video Demonstration**
-A narrated video demonstrating the application can be found here: [YouTube Link](https://youtu.be/example).
+A narrated video demonstrating the application can be found here: [YouTube Link](https://youtu.be/Yc0PIYjrZx8).
 
 
