@@ -157,5 +157,6 @@ Expected Outcome: The response status code should be 200, and the content should
 ## **Video Demonstration**
 A narrated video demonstrating the application can be found here: [YouTube Link](https://youtu.be/Yc0PIYjrZx8)
 [![Application Demo](https://img.youtube.com/vi/Yc0PIYjrZx8/0.jpg)](https://youtu.be/Yc0PIYjrZx8)
+I've also included the zip file for the video. Due to GitHub's file size limits I couldn't directly upload it.
 
 
