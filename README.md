@@ -30,10 +30,10 @@ This project includes three distinct visualizations:
 - A bar chart compares the count of incidents based on their nature (ex. Assault, Theft).
 - Provides an overview of the most and least common incident types.
 
-#### **Visualization 3: Incidents by Hour of the Day**
-- A bar chart showing the frequency of incidents during each hour of the day.
-- Useful for identifying peak times for incidents.
-
+#### **Visualization: Top 10 Locations by Incident Count**
+-This bar chart displays the top 10 locations with the highest number of incidents.
+-The chart highlights which locations require the most attention based on incident frequency, with the highest being 3300 Healthplex Parkway at 14 incidents.
+-Useful for identifying critical areas for resource allocation and intervention.
 
 ## **Installation and Setup**
 
