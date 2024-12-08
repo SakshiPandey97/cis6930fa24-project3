@@ -106,7 +106,6 @@ This project includes three distinct visualizations:
 
 ### Prerequisites
 - Python 3.12 recommended.
-- `pip` for installing dependencies.
 
 ### Dependencies
 Key dependencies include:
@@ -114,11 +113,11 @@ Key dependencies include:
 - pandas, numpy, scikit-learn (for data handling and clustering)
 - plotly (for interactive visualizations)
 - pypdf (for extracting text from PDFs)
-- sqlite3 (Python standard library for database)
+- sqlite3 
 
 All dependencies are listed in `Pipfile`.
 ### Tests
-This project includes a minimal set of tests designed to verify the core functionality of the application. The tests use pytest and ensure that the web application behaves as expected for its key features. Below is an overview of the test structure and instructions to run them.
+This project includes a minimal set of tests designed to verify the core functionality of the application. The tests use pytest and ensure that the web application behaves as expected for its key features. Below is an overview of the test structure. 
 
 1. test_index_get
 Purpose: Verifies that the index page (/) loads successfully.
