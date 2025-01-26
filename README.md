@@ -1,4 +1,4 @@
-# cis6930fa24project3 : End Pipeline
+# NormanPD: Incident Insights
 
 ## Author
 **Name:** Sakshi Pandey
